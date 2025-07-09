@@ -1,0 +1,47 @@
+{
+    "name": "instaclone",
+    "version": "1.0.0",
+    "description": "To enchance my skills in MERN",
+    "main": "app.js",
+    "scripts": {
+      "run": "nodemon server.js",
+      "start": "node server.js",
+      "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix Frontend && npm run build --prefix Frontend"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/ali-md321/Momentum.git"
+    },
+    "author": "Md Ali",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/ali-md321/Momentum/issues"
+    },
+    "homepage": "https://github.com/ali-md321/Momentum#readme",
+    "dependencies": {
+      "@sendgrid/mail": "^8.1.5",
+      "axios": "^1.10.0",
+      "bcryptjs": "^3.0.2",
+      "body-parser": "^2.2.0",
+      "cloudinary": "^2.7.0",
+      "connect-redis": "^9.0.0",
+      "cookie": "^1.0.2",
+      "cookie-parser": "^1.4.7",
+      "cors": "^2.8.5",
+      "dotenv": "^16.5.0",
+      "express": "^4.21.2",
+      "express-fileupload": "^1.5.1",
+      "ioredis": "^5.6.1",
+      "joi": "^17.13.3",
+      "jsonwebtoken": "^9.0.2",
+      "mongoose": "^8.16.0",
+      "multer": "^2.0.1",
+      "multer-storage-cloudinary": "^4.0.0",
+      "node-cron": "^4.2.0",
+      "nodemon": "^3.1.10",
+      "path": "^0.12.7",
+      "path-to-regexp": "^6.2.1",
+      "resend": "^4.6.0",
+      "socket.io": "^4.8.1"
+    }
+  }
