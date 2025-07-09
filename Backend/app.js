@@ -12,7 +12,11 @@ const chatRouter = require("./routers/chatRouter");
 const messageRouter = require("./routers/messageRouter");
 
 const allowedOrigins = [process.env.FRONTEND_URL];
-app.use(cors());
+app.use(cors({
+  origin : '*',
+  credentials: true,
+  methods : ["GET","POST","PATCH","DELETE","PUT"]
+}));
 
 app.use(cookieParser());
 app.use(express.json());
