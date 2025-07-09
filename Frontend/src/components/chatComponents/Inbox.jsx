@@ -5,6 +5,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { getSocket } from '../../utils/socket';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom'
+import { axiosInstance as axios } from '../../utils/axiosInstance';
+
 
 const socket = getSocket();
 
@@ -18,9 +20,8 @@ function Inbox({ currentChat, onBack }) {
 
   useEffect(() => {
     if (!currentChat?._id) return;
-    fetch(`/api/messages/${currentChat._id}`)
-      .then((res) => res.json())
-      .then((data) => setMessages(data.messages || []))
+    axios.get(`/api/messages/${currentChat._id}`)
+      .then((res) => setMessages(res.data.messages || []))
       .catch(() => setMessages([]));
   }, [currentChat]);
 
@@ -61,11 +62,11 @@ function Inbox({ currentChat, onBack }) {
   const sendMessage = async () => {
     if (!newMessage.trim()) return;
     try {
-      const res = await fetch('/api/message', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chatId: currentChat._id, content: newMessage }),
-      });
+      const res = await axios.post(
+        '/api/message',
+        { chatId: currentChat._id, content: newMessage }, // ✅ data
+        { headers: { 'Content-Type': 'application/json' } } // ✅ config
+      );
       const data = await res.json();
       if (!res.ok) throw new Error(data.message);
       const enriched = { ...data.message, sender: user };
