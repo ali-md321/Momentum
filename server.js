@@ -10,12 +10,14 @@ const PORT = process.env.PORT || 3000;
 
 connectDB();
 console.log("Frontend : ",process.env.FRONTEND_URL);
-if ( process.env.NODE_ENV == "production"){
-  app.use(express.static("Frontend/dist"));
+
+if (process.env.NODE_ENV === "production") {
   const path = require("path");
+  app.use(express.static(path.join(__dirname, "Frontend/dist")));
+
   app.get("*", (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'Frontend', 'dist', 'index.html'));
-  })
+    res.sendFile(path.resolve(__dirname, "Frontend", "dist", "index.html"));
+  });
 }
 
 const server = app.listen(PORT, () => {

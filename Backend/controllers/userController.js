@@ -52,7 +52,7 @@ module.exports.userSignUp = catchAsync(async (req, res) => {
 
 module.exports.userLogin = catchAsync(async(req, res) => {
     let { email, password } = req.body;
-
+    console.log("Hey from login...")
     const user = await User.findOne({
         $or: [{ email: email }, { username: email }]
     });

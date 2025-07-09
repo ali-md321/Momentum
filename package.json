@@ -6,7 +6,7 @@
     "scripts": {
         "run": "nodemon server.js",
         "start": "node server.js",
-        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix Frontend && npm run build --prefix Frontend"
+        "heroku-postbuild": "npm install --prefix Frontend && npm run build --prefix Frontend"
     },
     "repository": {
         "type": "git",
