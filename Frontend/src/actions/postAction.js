@@ -64,7 +64,9 @@ export const singlePostAction = (postId) => async(dispatch) => {
 export const homePostsAction = () => async(dispatch) => {
     try{
         dispatch({type : SHOW_HOMEPOSTS_REQUEST})
-        const {data} = await axios.get("/api/homeposts");
+        const {data} = await axios.get("/api/homeposts",{
+            withCredentials: true
+          });
         console.log(data.homePosts);
         dispatch({
             type : SHOW_HOMEPOSTS_SUCCESS,
