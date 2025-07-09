@@ -67,8 +67,7 @@ function Inbox({ currentChat, onBack }) {
         { chatId: currentChat._id, content: newMessage }, // ✅ data
         { headers: { 'Content-Type': 'application/json' } } // ✅ config
       );
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message);
+      const data = await res.data;
       const enriched = { ...data.message, sender: user };
       setMessages((prev) => [...prev, enriched]);
       socket.emit('sendMessage', { ...enriched, chatId: currentChat._id });
@@ -76,7 +75,7 @@ function Inbox({ currentChat, onBack }) {
       setNewMessage('');
       setTyping(false);
     } catch (err) {
-      toast.error(err || 'Failed to send message');
+      toast.error(err?.response?.data?.message || 'Failed to send message');
     }
   };
 
