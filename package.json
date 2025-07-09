@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "To enchance my skills in MERN",
     "main": "app.js",
+    "type" : "module",
     "scripts": {
         "run": "nodemon server.js",
         "start": "node server.js",
