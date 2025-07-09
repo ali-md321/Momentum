@@ -12,7 +12,6 @@ const chatRouter = require("./routers/chatRouter");
 const messageRouter = require("./routers/messageRouter");
 
 const allowedOrigins = [process.env.FRONTEND_URL];
-
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
