@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { axiosInstance as axios } from '../utils/axiosInstance';
 import {
   ALL_CHAT_REQUEST,
   ALL_CHAT_SUCCESS,

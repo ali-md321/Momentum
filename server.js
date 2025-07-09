@@ -9,10 +9,8 @@ const { configureSocket } = require("./Backend/config/socketConfig");
 const PORT = process.env.PORT || 3000;
 
 connectDB();
-console.log("Frontend : ",process.env.FRONTEND_URL);
 
 if (process.env.NODE_ENV === "production") {
-  const path = require("path");
   app.use(express.static(path.join(__dirname, "Frontend/dist")));
 
   app.get("*", (req, res) => {
