@@ -5,7 +5,7 @@ let socket;
 
 export const getSocket = (userId) => {
   if (!socket) {
-    socket = io("http://localhost:3000", {
+    socket = io("https://momentum-s326.onrender.com", {
       withCredentials: true,
     });
 
