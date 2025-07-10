@@ -13,7 +13,6 @@ module.exports.userSignUp = catchAsync(async (req, res) => {
 
   let avatarUrl, avatarFilename;
 
-  // Upload image only if present
   if (req.file) {
     const streamUpload = () =>
       new Promise((resolve, reject) => {
@@ -60,12 +59,11 @@ module.exports.userLogin = catchAsync(async(req, res) => {
         throw new ErrorHandler("Invalid Username/email", 404);
     }
 
-    const isMatch = await user.comparePassword(password); // ensure comparePassword is async
+    const isMatch = await user.comparePassword(password); 
 
     if (!isMatch) {
         throw new ErrorHandler("Password is incorrect", 400);
     }
-
     
     sendCookie(user,201,res);
 })

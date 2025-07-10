@@ -64,8 +64,8 @@ function Inbox({ currentChat, onBack }) {
     try {
       const res = await axios.post(
         '/api/message',
-        { chatId: currentChat._id, content: newMessage }, // ✅ data
-        { headers: { 'Content-Type': 'application/json' } } // ✅ config
+        { chatId: currentChat._id, content: newMessage }, 
+        { headers: { 'Content-Type': 'application/json' } } 
       );
       const data = await res.data;
       const enriched = { ...data.message, sender: user };
@@ -111,7 +111,7 @@ function Inbox({ currentChat, onBack }) {
             alt="Avatar"
             className="w-10 h-10 rounded-full border mr-3"
           />
-          <div className="font-semibold mt-2">@{friend.username}</div>
+          <div className="font-semibold mt-2">{friend?.name}</div>
         </Link>
       </div>
   

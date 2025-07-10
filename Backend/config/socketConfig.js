@@ -19,7 +19,6 @@ const configureSocket = (server) => {
       if (userId) {
         await redisClient.set(`user:${userId}`, socket.id);
         const users = await redisClient.keys("user:*");
-        console.log(users);
         socketIO.emit("getUsers", users.map(k => k.split(":")[1]));
       }
     });

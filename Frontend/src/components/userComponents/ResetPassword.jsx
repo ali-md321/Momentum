@@ -10,15 +10,15 @@ const ResetPassword = () => {
   const navigate = useNavigate();
   const params = useParams();
 
-  const { loading } = useSelector((state) => state.forgotPassword);
+  const { isLoading } = useSelector((state) => state.forgotPassword);
 
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (newPassword.length < 8) {
-      toast.warn("Password must be at least 8 characters");
+    if (newPassword.length < 6) {
+      toast.warn("Password must be at least 6 characters");
       return;
     }
     if (newPassword !== confirmPassword) {
@@ -37,7 +37,7 @@ const ResetPassword = () => {
 
   return (
     <>
-      {loading && <BackdropLoader />}
+      {isLoading && <BackdropLoader />}
 
       <div className="max-w-sm mx-auto mt-12 bg-white border border-gray-300 rounded-md shadow-sm">
         <div className="p-8 flex flex-col items-center gap-4">
@@ -74,7 +74,7 @@ const ResetPassword = () => {
             <button
               type="submit"
               className="w-full py-2 rounded-md text-white font-medium transition"
-              style={{ backgroundColor: '#03045e' }} // federal_blue
+              style={{ backgroundColor: '#03045e' }}
             >
               Submit
             </button>

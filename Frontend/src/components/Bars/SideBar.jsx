@@ -7,10 +7,11 @@ import {
   AccountCircle as AccountCircleIcon,
 } from "@mui/icons-material";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Sidebar() {
   const location = useLocation();
-
+  const { user } = useSelector(state => state.user);
   const navItems = [
     { name: "Home", icon: <HomeIcon />, path: "/" },
     { name: "Search", icon: <SearchIcon />, path: "/search" },
@@ -66,7 +67,7 @@ export default function Sidebar() {
           <div className={`mt-6 text-gray-600 hover:text-blue-500 transition flex items-center ${isCompact ? 'justify-center' : 'gap-3 px-3'}`}>
             <Link to="/user/me" className="flex justify-baseline"> 
               <img
-                src= "https://i.pravatar.cc/300"
+                src= {user?.avatar?.url || "https://i.pravatar.cc/300"}
                 alt="Profile"
                 className="w-8 h-8 mr-5 rounded-full border"
               />

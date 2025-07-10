@@ -27,7 +27,6 @@ function PostContainer({ post }) {
 
   const [showCommentsModal, setShowCommentsModal] = useState(false);
   const [showLikedUserModal, setShowLikedUserModal] = useState(false);
-  const [followChanged, setFollowChanged] = useState(false);
 
   const handleAddComment = async () => {
     if (comment.trim()) {
@@ -91,7 +90,6 @@ function PostContainer({ post }) {
             key={`${post.postedBy._id}-${user.following?.length}`} // 🔁 Rerender when list changes
             targetUserId={post.postedBy?._id}
             className="m-2 h-9"
-            onFollowToggle={() => setFollowChanged((prev) => !prev)}
           />
           
         )}

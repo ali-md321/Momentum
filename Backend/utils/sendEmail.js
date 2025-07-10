@@ -1,4 +1,5 @@
 const sgMail = require('@sendgrid/mail');
+const ErrorHandler = require('./errorhandler');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const sendEmail = async (options) => {
@@ -15,7 +16,7 @@ const sendEmail = async (options) => {
     console.log("✅ Email sent to", options.email);
   } catch (error) {
     console.error("❌ SendGrid Error:", error?.response?.body || error.message);
-    throw new Error("Email failed to send");
+    throw new ErrorHandler("Email failed to send",400);
   }
 };
 

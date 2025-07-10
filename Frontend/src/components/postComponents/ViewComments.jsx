@@ -11,13 +11,16 @@ function ViewComments({ post, comments, setComments, onClose }) {
 
   const handleAddComment = async () => {
     if (comment.trim()) {
-      const {comment : newComment} = await dispatch(addCommentAction(comment, post._id));
+      const { comment: newComment } = await dispatch(addCommentAction(comment, post._id));
 
       if (newComment) {
-        setComments(prev => [...prev, {
-          comment: newComment,
-          user: currUser
-        }]);
+        setComments(prev => [
+          ...prev,
+          {
+            comment: newComment,
+            user: currUser,
+          },
+        ]);
         setComment('');
       }
     }
@@ -25,8 +28,8 @@ function ViewComments({ post, comments, setComments, onClose }) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-      <div className="bg-white w-[900px] h-[600px] rounded-xl overflow-hidden flex shadow-lg relative">
-        {/* Close Button */}
+      <div className="bg-white w-full max-w-[900px] h-[600px] rounded-xl overflow-hidden flex flex-col md:flex-row shadow-lg relative">
+
         <button
           className="absolute top-4 right-4 z-10 text-gray-700 hover:text-black"
           onClick={onClose}
@@ -34,8 +37,8 @@ function ViewComments({ post, comments, setComments, onClose }) {
           <CloseIcon />
         </button>
 
-        {/* Left: Post Image */}
-        <div className="w-1/2 h-full bg-black">
+        {/* Left: Post Image (hidden on mobile) */}
+        <div className="hidden md:block md:w-1/2 h-full bg-black">
           <img
             src={post?.image?.url}
             alt="post"
@@ -44,7 +47,7 @@ function ViewComments({ post, comments, setComments, onClose }) {
         </div>
 
         {/* Right: Comments Section */}
-        <div className="w-1/2 h-full flex flex-col">
+        <div className="w-full md:w-1/2 h-full flex flex-col">
           {/* Post Owner Header */}
           <div className="flex items-center gap-3 px-4 py-3 border-b">
             <Link

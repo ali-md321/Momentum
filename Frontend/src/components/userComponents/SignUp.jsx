@@ -28,7 +28,7 @@ const SignUp = () => {
       dispatch(clearErrors());
       setMessage('');
     };
-  }, [dispatch]);
+  }, []);
   
 
 
@@ -49,16 +49,7 @@ const SignUp = () => {
       setMessage("");
       toast.success(`Welcome, ${user.username}!`);
       navigate("/");
-    } else {
-      toast.error("Sign up failed. Try again.");
-    }
-    // if (success) {
-    //    // Optional
-    //   const toastMsg = () => {setTimeout(toast.success("User Signed Up!..."))}
-    //   toastMsg();
-    //   navigate("/");
-    // }
-    
+    }    
   };
   
 

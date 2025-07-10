@@ -29,7 +29,7 @@ function ChatSidebar({ onSelectChat }) {
     <div className="h-full flex flex-col bg-white">
     {/* Header */}
     <div className="sticky top-0 bg-white z-10 border-b p-4 text-xl font-bold">
-      {user.username}
+      {user?.name}
     </div>
 
     <div className="p-4 font-semibold text-xl flex justify-between items-center border-b">

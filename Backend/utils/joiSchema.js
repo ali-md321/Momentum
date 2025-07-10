@@ -15,7 +15,8 @@ module.exports.userJoiSchema = Joi.object({
             .pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$])[a-zA-Z0-9!@#$]{6,30}$')
         )
             .messages({
-                'string.pattern.base': "password should only contain Alphabets or Numbers or Special chars!!"
+                'string.pattern.base': "Password must include at least one uppercase letter, one lowercase letter, one number, and one special character (!@#$)."
+
             }),
     
     email: Joi.string()

@@ -8,7 +8,7 @@ import BackdropLoader from '../Layouts/BackdropLoader';
 
 const ForgotPassword = () => {
   const dispatch = useDispatch();
-  const { error, message, loading } = useSelector((state) => state.forgotPassword);
+  const { error, message, isLoading } = useSelector((state) => state.forgotPassword);
 
   const [email, setEmail] = useState("");
 
@@ -30,7 +30,7 @@ const ForgotPassword = () => {
 
   return (
     <>
-      {loading && <BackdropLoader />}
+      {isLoading && <BackdropLoader />}
 
       <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
         <div className="max-w-md w-full space-y-6">

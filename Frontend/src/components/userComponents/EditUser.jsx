@@ -90,7 +90,7 @@ export default function EditUser() {
       toast.success("Profile updated successfully ✅");
       navigate("/user/me");
     } else if (res?.error) {
-      toast.error(res.error); // backend error
+      toast.error(res.error);
     }
   };
 

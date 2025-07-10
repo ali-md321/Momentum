@@ -12,7 +12,7 @@ export const getSocket = (userId) => {
     socket.on("connect", () => {
       console.log("Socket connected:", socket.id);
       if (userId) {
-        socket.emit("addUser", userId); // ✅ Track online user
+        socket.emit("addUser", userId); 
       }
     });
   }

@@ -23,7 +23,7 @@ function Login() {
     return () => {
       dispatch(clearErrors());
     };
-  }, [dispatch]);
+  }, []);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ function Login() {
     const { success } = await dispatch(LoginUserAction(user));
     if (success) {
       setUser({ email: '', password: '' });
-      toast.success("Logged in successfully!");
+      toast.success("Logged in!..");
       navigate("/");
     }
   };
@@ -88,7 +88,7 @@ function Login() {
         <div className="mt-4 text-center">
           <Link
             to="/password/forgot"
-            className="text-sm text-white/80 hover:underline"
+            className="text-sm text-white hover:underline"
           >
             Forgot password?
           </Link>

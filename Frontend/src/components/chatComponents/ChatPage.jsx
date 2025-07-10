@@ -31,7 +31,7 @@ function ChatPage() {
 
       {/* Inbox */}
       {shouldShowInbox && (
-        <div className={`${isMobile ? 'w-full' : 'flex-1'} h-full`}>
+        <div className={`${isMobile ? 'w-full' : 'flex-1'}`}>
           <Inbox currentChat={currentChat} onBack={() => setCurrentChat(null)} />
         </div>
       )}

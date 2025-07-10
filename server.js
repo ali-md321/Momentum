@@ -9,18 +9,17 @@ const { configureSocket } = require("./Backend/config/socketConfig");
 const PORT = process.env.PORT || 3000;
 
 connectDB();
-console.log("Frontend : ",process.env.FRONTEND_URL);
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "Frontend/dist")));
+  app.use(express.static(path.join(__dirname, "Frontend","dist")));
 
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "Frontend", "dist", "index.html"));
-  });
+  }); 
 }
 
 const server = app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server running at ${process.env.BACKEND_URL}:${PORT}`);
 });
 
 configureSocket(server);

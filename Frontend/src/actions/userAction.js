@@ -12,8 +12,7 @@ export const registerUserAction = (formData) => async(dispatch) => {
                 'Content-Type' : 'multipart/form-data'
             },
         }
-        const { data } = await axios.post("/api/signup",formData,config, { withCredentials: true }); // <-- send raw user, not { user }
-        console.log(data); 
+        const { data } = await axios.post("/api/signup",formData,config, { withCredentials: true }); 
         dispatch({
             type : REGISTER_USER_SUCCESS,
             payload : data.user
@@ -31,9 +30,7 @@ export const registerUserAction = (formData) => async(dispatch) => {
 export const LoginUserAction = ({email,password}) => async (dispatch) =>{
     try {
         dispatch({type : LOGIN_USER_REQUEST});
-        const {data} = await axios.post("/api/login",
-                            {email,password}, { withCredentials: true }); // <-- send raw user, not { user }
-        console.log("data:",data);
+        const {data} = await axios.post("/api/login",{email,password}, { withCredentials: true }); 
         dispatch({
             type : LOGIN_USER_SUCCESS,
             payload : data.user
@@ -121,7 +118,6 @@ export const searchUserAction = (username) => async(dispatch) => {
         dispatch({type : SEARCH_USER_REQUEST});
 
         const {data} = await axios.get(`/api/search/${username}`);
-        console.log("Data Received : ",data);
         dispatch({
             type : SEARCH_USER_SUCCESS,
             payload : data.searchUsers
@@ -139,7 +135,6 @@ export const editUserAction = (formData) => async(dispatch) => {
         dispatch({type : EDIT_USER_REQUEST});
 
         const {data} = await axios.patch(`/api/user/me`,formData);
-        console.log(data);
         dispatch({
             type : EDIT_USER_SUCCESS,
             payload : data.user

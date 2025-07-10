@@ -29,7 +29,7 @@ function App() {
   useEffect(() => {
     async function loadUser() {
       await dispatch(loadUserAction());
-      setAppLoading(false); // Only after user is loaded, set loading false
+      setAppLoading(false); 
     }
     loadUser();
   }, [dispatch]);

@@ -28,7 +28,6 @@ export const accessChat = (userId) => async (dispatch) => {
   try {
     dispatch({ type: ACCESS_CHAT_REQUEST });
     const { data } = await axios.post('/api/chat', { userId });
-    console.log(data);
     dispatch({ type: ACCESS_CHAT_SUCCESS, payload: data });
     return data.chat;
   } catch (error) {

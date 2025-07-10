@@ -36,7 +36,10 @@ function SearchModal({ onClose, onSelectUser }) {
             <div
               key={user._id}
               className="flex items-center gap-3 p-2 hover:bg-gray-100 cursor-pointer"
-              onClick={() => onSelectUser(user)}
+              onClick={() =>{
+                onSelectUser(user);
+                onClose();
+              }}
             >
               <img
                 src={user.avatar?.url || '/default.png'}
@@ -45,7 +48,7 @@ function SearchModal({ onClose, onSelectUser }) {
               />
               <div>
                 <p className="font-medium">{user.username}</p>
-                <p className="text-sm text-gray-500">{user.email}</p>
+                <p className="text-sm text-gray-500">{user.name}</p>
               </div>
             </div>
           ))}

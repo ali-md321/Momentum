@@ -1,4 +1,3 @@
-// src/utils/axiosInstance.js (recommended)
 import axios from "axios";
 
 const baseURL =

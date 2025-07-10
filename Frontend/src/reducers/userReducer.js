@@ -161,25 +161,25 @@ export const forgotPasswordReducer = (state = {}, { type, payload }) => {
         case RESET_PASSWORD_REQUEST:
             return {
                 ...state,
-                loading: true,
+                isLoading: true,
             };
         case FORGOT_PASSWORD_SUCCESS:
             return {
                 ...state,
-                loading: false,
+                isLoading: false,
                 message: payload,
             };
         case RESET_PASSWORD_SUCCESS:
             return {
                 ...state,
-                loading: false,
+                isLoading: false,
                 success: payload,
             };
         case FORGOT_PASSWORD_FAIL:
         case RESET_PASSWORD_FAIL:
             return {
                 ...state,
-                loading: false,
+                isLoading: false,
                 error: payload,
             };
         case CLEAR_ERRORS:
