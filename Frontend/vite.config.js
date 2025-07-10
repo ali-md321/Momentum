@@ -19,6 +19,7 @@ export default defineConfig({
     }
   },
   server: {
+    historyApiFallback: true,
     proxy: {
       '/api': {
         target: 'https://momentum-s326.onrender.com', // 'http://localhost:3000'
