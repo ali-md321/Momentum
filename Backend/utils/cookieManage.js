@@ -22,9 +22,10 @@ module.exports.sendCookie = (user={},statusCode,res) => {
 }
 
 module.exports.deleteCookie = (statusCode,res) => {
-    res.status(statusCode).cookie('token',null,{
-        expires : new Date(Date.now()),
+    res.status(statusCode).cookie('token',"", {
         httpOnly: true,
+        expires: new Date(0),
+        sameSite: "None",
         secure: true,
     }).json({
         message : "User LogOut!!",
