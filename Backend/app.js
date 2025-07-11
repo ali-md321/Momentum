@@ -12,8 +12,13 @@ const chatRouter = require("./routers/chatRouter");
 const messageRouter = require("./routers/messageRouter");
 const ErrorHandler = require("./utils/errorhandler");
 
-const allowedOrigins = [process.env.FRONTEND_URL];
 
+app.set('trust proxy', 1);
+
+const allowedOrigins = [
+  "https://momentum-app-1jtb.onrender.com",
+  "http://localhost:5173", // optional for dev
+];
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
