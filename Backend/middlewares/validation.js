@@ -2,6 +2,7 @@ const ErrorHandler = require("../utils/errorhandler");
 const { userJoiSchema, userEditJoiSchema, passwordJoiSchema} = require("../utils/joiSchema");
 const catchAsync = require("./catchAsync");
 const User = require("../models/userModel");
+const cloudinary = require("cloudinary").v2;
 
 exports.validateUserSignUp = catchAsync(async(req,res,next) => {
     let result = userJoiSchema.validate(req.body);
