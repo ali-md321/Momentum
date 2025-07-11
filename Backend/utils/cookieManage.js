@@ -4,12 +4,12 @@ module.exports.sendCookie = (user={},statusCode,res) => {
 
     const userData = user.toObject();
     delete userData.password;
-
+    const isProd = process.env.NODE_ENV;
     const options = {
         expires : new Date(Date.now() + process.env.COOKIE_EXPIRE*24*60*60*1000),
         httpOnly: true,
-        secure: true,
-        sameSite: 'None',
+        secure: isProd,
+        sameSite: isProd ? "None" : "Lax",
         maxAge: 7 * 24 * 60 * 60 * 1000,
     }
 
@@ -23,10 +23,11 @@ module.exports.sendCookie = (user={},statusCode,res) => {
 }
 
 module.exports.deleteCookie = (statusCode,res) => {
-    res.status(statusCode).cookie('token',"", {
+    res.status(statusCode).cookie('token',null, {
         httpOnly: true,
         expires: new Date(0),
         secure: true,
+        sameSite: 'None',
     }).json({
         message : "User LogOut!!",
     })
