@@ -13,16 +13,17 @@ const messageRouter = require("./routers/messageRouter");
 const ErrorHandler = require("./utils/errorhandler");
 
 const allowedOrigins = [process.env.FRONTEND_URL];
+
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new ErrorHandler("CORS policy does not allow access from this origin"));
+      callback(new Error('Not allowed by CORS'));
     }
   },
   credentials: true,
-  methods: ["GET", "POST", "PATCH", "DELETE", "PUT"]
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
 }));
 
 app.use(cookieParser());
